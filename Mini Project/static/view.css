@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+* {
+    padding: 0;
+    margin: 0;
+    font-family: sans-serif;
+  }
+
+  .maindiv {
+      
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0, 0.6);
+    color: white;
+    font-weight: bold;
+    border: 3px solid #f1f1f1;
+    position: absolute;
+    justify-content: center;
+    top: 0%;
+    display: flex;
+    justify-content: space-between;
+
+    left: 0%;
+    /* transform: translate(-50%, -50%); */
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    padding: -5px;
+    /* text-align: center; */
+}
+.headingdiv{
+    text-align: left;
+    margin: 30px;
+}
+
+
+.formdiv{
+    width: 500px;
+    /* top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%); */
+    position: absolute;
+    text-align: left;
+    padding-left: 10px;
+}
+
+  .bottomdiv{
+    margin-right: 200px;
+    margin-top: 28px;
+  }
+
+  .bottomdiv table{
+    padding: 10px;
+    
+  }
+
+.bottomdiv td{
+  padding-left: 30px;
+}
+
+.container{
+  display: flex;
+  margin-left: 2px;
+}
+
+
+.input1{
+  width: 400px;
+  border-radius: 5px 0 0 5px;
+  border: none;
+  padding-left: 5px;
+}
+
+.close-btn{
+  color: white;
+  background-color: green;
+  border: none;
+  border-radius: 0 5px 5px 0;
+  width: 70px;
+  height: 30px;
+}

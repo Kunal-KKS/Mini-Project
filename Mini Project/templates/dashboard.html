@@ -1,0 +1,181 @@
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+        crossorigin="anonymous"></script>
+
+    <!-- css -->
+    <link rel="stylesheet" type="text/css" href="../static/dashboard.css">
+
+
+<!-- js links -->
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
+<!-- css link -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css">
+
+    <style>
+        body,
+        html {
+            height: 100%;
+            margin: 0;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        .bg-img {
+            /* The image used */
+            background-image: url("../static/main_bg.jpg");
+
+            /* Full height */
+            height: 100%;
+
+            /* Center and scale the image nicely */
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+
+            /* Add blur*/
+            filter: blur(5px);
+            
+            
+
+        }
+    </style>
+    <title>The Lobby Hospital</title>
+</head>
+
+<body>
+
+    <div class="bg-img"></div>
+    <div class="header">
+        <h1>Welcome to the Hospital Dashboard</h1>
+
+        <div class="head">
+            <!-- <div class="formdiv"> -->
+            <div class="p-1 w-100">
+                <form class="form-inline" id="add" action="/adding_records" method="post">
+                    <div class="d-flex justify-content-around">
+                        <h3 class="text-light">Patient Info.</h3>
+                        <div class="form-group w-50 p-3">
+                            <input type="text" class="form-control" id="Patient_id" placeholder="Patient_id" name="Patient_id" />
+                        </div>
+                        <div class="form-group w-50 p-3">
+                            <input type="text" class="form-control" id="name" placeholder="Name" name="Name" />
+                        </div>
+                        <div class="form-group w-50 p-3">
+                            <input type="number" class="form-control" id="Bed_no" maxlength="3" placeholder="Bed_no" name="Bed_no" />
+                        </div>
+                        <div class="form-group w-75 p-3">
+                            <input type="number" class="form-control" id="phonenumber" maxlength="10" minlength="10" placeholder="Enter Phone No."
+                                name="Phone_no" />
+                        </div>
+                        <div class="form-group w-75 p-3">
+                            <input type="text" class="form-control" id="Emergency_contact_name"
+                                placeholder="Emerg Contact Name" name="Emergency_contact_name" />
+                        </div>
+                        <div class="form-group w-75 p-3">
+                            <input type="number" class="form-control" id="Emergency_contact_no"
+                            maxlength="10" minlength="10" placeholder="Emerg Contact No." name="Emergency_contact_no" />
+                        </div>
+
+                        <div class="form-group w-50 p-3">
+                            <select class="form-select" aria-label="Default select example" name="Status" >
+                                <option value="" disabled selected>Status</option>
+                                <option value="Normal">Normal</option>
+                                <option value="Critical">Critical</option>
+                                <option value="Dead">Dead</option>
+                            </select>
+                        </div>
+
+                        <button type="submit" class="btn btn-outline-primary h-25 mt-3 p-1 px-2 rounded-circle">
+                            ➕
+                        </button>
+                        <button type="submit" formaction="/update_record" method="post" class="btn btn-outline-success h-25 mt-3  mx-2 p-1 rounded-circle">
+                            🖊️
+                        </button>
+                        <button type="submit" formaction="/search_record" method="post" class="btn btn-outline-info h-25 mt-3 p-1 rounded-circle">
+                            🔍
+                        </button>
+                        <a href="/refresh" ><span class=reload style="color: rgb(0, 0, 0) ;">&#x21bb;</span></a>
+                    </div>
+                </form>
+            </div>
+            <!-- <div class="and_search">
+                    <div class="search">
+                    <form action="/searchrecord" method="post" class="search-container">
+                        <input type="text" id="search-bar" name="Name" placeholder="Search" autofocus>
+                        <a href="#"><img class="search-icon" src="http://www.endlessicons.com/wp-content/uploads/2012/12/search-icon.png"></a>
+                      </form>
+                    </div>
+                    <button type= "submit">ADD</button> 
+                </div> -->
+        </div>
+        <div class="bottomdiv">
+            {% with messages = get_flashed_messages()%} {% if messages %} {%for msg
+
+                in messages %}
+        
+                <p>{{msg}}</p>
+        
+                {% endfor%} {% endif%} {% endwith %}
+            <div ><table class="table" id="example">
+                <thead class="bg-light">
+                    <tr>
+                        <th scope="col">Patient_id</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Bed_no</th>
+                        <th scope="col">Phone_no</th>
+                        <th scope="col">Emergency_contact_name</th>
+                        <th scope="col">Emergency_contact_no</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Delete</th>
+                    </tr>
+                </thead>
+                <tbody class="text-white">
+                    {% for row in rows %}
+
+                    <tr>
+                        <td>{{row['Patient_id']}}</td>
+                        <td>{{row['name']}}</td>
+                        <td>{{row['Bed_no']}}</td>
+                        <td>{{row['Phone_no']}}</td>
+                        <td>{{row['Emergency_contact_name']}}</td>
+                        <td>{{row['Emergency_contact_no']}}</td>
+                        <td>{{row['Status']}}</td>
+                        <td>
+                            <a href="/delete/{{row['Patient_id']}}"><i class="material-icons " style="color: rgb(0, 0, 0)">delete</i></a></td> 
+                    </tr>
+
+                    {% endfor %}
+                </tbody>
+            </table></div>
+            
+        </div>
+       
+    </div>
+    <div>
+        <a href='/analytics' class='btn btn-outline-info' style=" top: 85%; position: absolute; z-index: 3; 
+        border-radius: 50px; left: 96%;  opacity: 0.4;  font-size: 18px; 
+        ">R</a>
+        <a href='/logout' class='btn btn-outline-info' style=" top: 91%; position: absolute; z-index: 3; 
+        border-radius: 50px; left: 93%;  opacity: 0.4; padding: 10px;
+        "><i class="fa fa-sign-out fa-1x"></i></a>
+    </div>
+<script>$(document).ready(function () {
+    $('#example').DataTable({paging:false, info:false});
+});</script>
+</body>
+
+</html>

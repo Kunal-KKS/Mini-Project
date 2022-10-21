@@ -1,0 +1,36 @@
+* {
+    padding: 0;
+    margin: 0;
+    font-family: sans-serif;
+  }
+  .signUp-form{
+    width: 350px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    position: absolute;
+    text-align: left;
+    padding-left: 30px;
+  }
+  .signUP-form input{
+    font-size: 16px;
+    width: 100%;
+    padding: 6px 10px;
+    border: 0;
+    outline: none;
+    border-radius: 5px;
+  }
+  
+  .signUp-form button{
+    font-size: 18px;
+    font-weight: bold;
+    margin: 1px 0;
+    padding: 2px 30px;
+    border: 0;
+    outline: none;
+    border-radius: 6px;
+    width: 50%;
+  
+  
+  
+  }

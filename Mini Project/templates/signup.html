@@ -1,0 +1,125 @@
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- CSS only -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+  <!-- JavaScript Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+    crossorigin="anonymous"></script>
+  <style>
+    body,
+    html {
+      height: 100%;
+      margin: 0;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    .bg-img {
+      /* The image used */
+      background-image: url("../static/main_bg.jpg");
+
+      /* Full height */
+      height: 100%;
+
+      /* Center and scale the image nicely */
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+
+      /* Add blur*/
+      filter: blur(4px);
+
+    }
+
+    .bg-text {
+
+      background-color: rgb(0, 0, 0);
+      background-color: rgba(0, 0, 0, 0.4);
+      color: white;
+      font-weight: bold;
+      border: 3px solid #f1f1f1;
+      position: absolute;
+      justify-content: center;
+      top: 55%;
+      left: 50%;
+      transform: translate(-50%, -51%);
+      z-index: 2;
+      width: 30%;
+      height: 91%;
+      text-align: center;
+    }
+
+    .middle {
+      text-align: center;
+      color: #4EE2EC;
+      padding-top: 20px;
+    }
+
+    .n-d {
+      text-align: center;
+      justify-content: center;
+      padding-top: 20px;
+      padding-bottom: 20px;
+      margin: -6px;
+    }
+  </style>
+  <title>Signup to The Lobby</title>
+  <link rel="stylesheet" type="text/css" href="../static/login.css">
+</head>
+
+<body>
+
+  <div class="bg-img"></div>
+  <h2 style="z-index: 2; position: absolute; top: 2.2%; left: 44%;">SignUp Form</h2>
+  <div class="bg-text">
+    <div class="m-d">
+
+      <div class="middle">
+        <h1 style="font-size: 3.5vw;">The Lobby</h1>
+      </div>
+
+    </div>
+    
+    <div class="login-form">
+      <form method="POST" action="">
+        {{ form.hidden_tag() }}
+        <p>Name</p>
+        {{ form.Name }}
+        <p>User Name</p>
+        {{ form.username }}
+        <p>Password</p>
+        {{ form.password }}
+        <p>Confirm Password</p>
+        {{ form.c_password }}
+        <p>Phone Number</p>
+        {{ form.Phone_no }}
+
+        
+        {{ form.submit(class_="btn w-25 mt-3 btn-success") }}
+    </form>
+      
+      <p>Don't have an account...
+        <font size="3" color="#000000">
+          <a href="{{url_for('login')}}" class="text-dark">Log In</a>
+        </font>
+
+      </p>
+
+      <p>
+        {% with messages = get_flashed_messages()%} {% if messages %} {%for msg
+
+          in messages %}
+  
+          <p>{{msg}}</p>
+  
+          {% endfor%} {% endif%} {% endwith %}
+      </p>
+    </div>
+  </div>
+</body>
+
+</html>

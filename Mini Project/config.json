@@ -1,0 +1,7 @@
+
+{
+    "DatabaseURI": "sqlite:///hospital.db",
+    "SecretKey":"thisisasecretkey",
+    "Database":"hospital.db"
+
+}
